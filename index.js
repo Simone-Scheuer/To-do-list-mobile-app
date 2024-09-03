@@ -21,7 +21,7 @@ const deleteBtn = document.getElementById("delete-btn")
 function render(leads) {
     let listItems = ""
     for (let i = 0; i < leads.length; i++) {
-        let itemNbox = leads[i] += '<input type="checkbox"></input>'
+        let itemNbox = leads[i] += '<input class = "checkbox", type="checkbox"></input>'
         listItems += `
             <li>
                 ${itemNbox}
