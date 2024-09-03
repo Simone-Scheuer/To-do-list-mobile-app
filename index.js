@@ -19,17 +19,30 @@ const ulEl = document.getElementById("ul-el")
 const deleteBtn = document.getElementById("delete-btn")
 
 function render(leads) {
-    let listItems = ""
-    for (let i = 0; i < leads.length; i++) {
-        let itemNbox = leads[i] += '<input class = "checkbox", type="checkbox"></input>'
+    let listItems = "";
+    for (let key in leads) {
+        let lead = leads[key];
+        let checked = lead.checked ? 'checked' : '';
         listItems += `
-            <li>
-                ${itemNbox}
+            <li data-id="${key}">
+                ${lead.text} <input class="checkbox" type="checkbox" ${checked}>
             </li>
-        `
+        `;
     }
-    ulEl.innerHTML = listItems
+    ulEl.innerHTML = listItems;
 }
+
+ulEl.addEventListener('change', function(event) {
+    if (event.target.classList.contains('checkbox')) {
+        const li = event.target.closest('li');
+        const id = li.dataset.id;
+        const checked = event.target.checked;
+
+        // Update checkbox state in Firebase
+        const itemRef = ref(database, `leads/${id}`);
+        itemRef.update({ checked: checked });
+    }
+});
 
 onValue(referenceInDB, function(snapshot) {
     const snapshotDoesExist = snapshot.exists()
@@ -46,6 +59,10 @@ deleteBtn.addEventListener("dblclick", function() {
 })
 
 inputBtn.addEventListener("click", function() {
-    push(referenceInDB, inputEl.value)
-    inputEl.value = "" 
+    const newItem = {
+        text: inputEl.value,
+        checked: false
+    };
+    push(referenceInDB, newItem);
+    inputEl.value = "";
 })
