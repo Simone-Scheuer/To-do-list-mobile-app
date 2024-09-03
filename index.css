@@ -53,6 +53,7 @@ ul {
 }
 
 li {
+    width: 100%;
     color: #FFD978;
     justify-content: center;
     text-align: center;
