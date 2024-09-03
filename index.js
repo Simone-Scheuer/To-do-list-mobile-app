@@ -42,11 +42,11 @@ function render(leads) {
     let listItems = ""
     for (let i = 0; i < leads.length; i++) {
         let itemNbox = leads[i] += '<input type="checkbox"></input>'
-        listItems += `
+        listItems += 
             <li>
                 ${itemNbox}
             </li>
-        `
+        
     }
     ulEl.innerHTML = listItems
 }
