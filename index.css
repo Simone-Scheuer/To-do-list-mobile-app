@@ -69,7 +69,7 @@ li {
     margin-top: 5px;
     display: flex;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 5px;
     overflow-wrap: break-word; /* Handles long words */
     word-break: break-word; /* Breaks long words to prevent overflow */
 }
