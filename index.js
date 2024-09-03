@@ -24,7 +24,7 @@ function render(leads) {
         let lead = leads[key];
         listItems += `
             <li data-id="${key}">
-                ${lead.text} <input class="checkbox" type="checkbox" checked>
+                 ${lead.text} <input class="checkbox" type="checkbox" ${lead.checked ? 'checked' : ''}>
             </li>
         `;
     }
