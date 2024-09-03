@@ -47,6 +47,9 @@ button {
     background: #586E75;
     color: #00D3B2;
 }
+.checkbox {
+    width: 30px;
+}
 
 ul {
     margin-top: 20px;
